@@ -9,36 +9,46 @@
 #include "Racket.h"
 #include "Input.h"
 #include "KeyboardInput.h"
+#include "Ball.h"
 
-void execute_one_frame(std::shared_ptr<Display> & display_ptr, std::shared_ptr<Input> & input_ptr, std::shared_ptr<Racket> & racket_ptr)
-{
-	
-
-}
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow)
 {
 
-	std::shared_ptr<Display> display_ptr = Display::get_instance(1200, 700);
+	std::shared_ptr<Display> display_ptr = Display::get_instance(1000, 700);
 
 	std::shared_ptr<Input>   input_ptr(new KeyboardInput());
 
+
 	std::shared_ptr<Racket>  racket_ptr(new Racket(display_ptr, 50, 50));
+	std::shared_ptr<Ball>    ball_ptr(new Ball(display_ptr, 100, 50));
 
-	input_ptr->addListener(racket_ptr.get());
 
+	std::vector<std::shared_ptr<Object>> objects;
+	objects.push_back(racket_ptr);
+	objects.push_back(ball_ptr);
+
+
+	input_ptr->addListener(racket_ptr);
+
+
+	SDL_Event evt;
 	bool exit = false;
-
-	racket_ptr->draw();
-	display_ptr->clear();
-	display_ptr->show();
-
 	while (!exit)
 	{
-
-
+		//racket_ptr->x += 5;
+		display_ptr->clear();
+		int status = input_ptr->check_input();
+		if (status < 0)
+		{
+			exit = true;
+		}
+		for (std::vector<std::shared_ptr<Object>>::iterator it = objects.begin(); it < objects.end(); ++it)
+		{
+			(*it)->draw();
+		}
+		display_ptr->show();
 	}
-
 
 	return 0;
 

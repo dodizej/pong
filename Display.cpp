@@ -46,6 +46,7 @@ void Display::drawRect(int x, int y, int w, int h)
 	
 	SDL_SetRenderDrawColor(this->m_window_renderer, 255, 255, 255, 255);
 	SDL_RenderFillRect(this->m_window_renderer, &rect);
+	SDL_SetRenderDrawColor(this->m_window_renderer, 0, 0, 0, 255);
 }
 
 void Display::clear()
@@ -56,10 +57,15 @@ void Display::clear()
 void Display::show()
 {
 	SDL_RenderPresent(m_window_renderer);
+	SDL_Delay(1000 / 60);
 }
 
-void Display::get_window_size(int & x, int & y)
+int Display::get_window_size_x()
 {
-	x = this->window_size_x;
-	y = this->window_size_y;
+	return this->window_size_x;
+}
+
+int Display::get_window_size_y()
+{
+	return this->window_size_y;
 }

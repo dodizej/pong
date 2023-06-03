@@ -20,7 +20,8 @@ public:
     void show();
     void clear();
 
-    void get_window_size(int & x, int & y);
+    int get_window_size_x();
+    int get_window_size_y();
 
 private:
 

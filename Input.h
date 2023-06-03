@@ -3,24 +3,28 @@
 #include "Key.h"
 #include <vector>
 #include "InputListener.h"
+#include "Object.h"
 
 class Input
 {
 
 private:
 
-    std::vector<InputListener*> listeners;
+    typedef std::shared_ptr<InputListener> listener_ptr;
+
+    std::vector<listener_ptr> listeners;
 
 public:
 
     Input();
 
-    virtual void check_input();
+    virtual int  check_input();
 
-    virtual void input_implementation(State & state, Key & key) = 0;
+    virtual int  input_implementation(State & state, Key & key) = 0;
 
-    virtual void addListener(InputListener* listener);
-    virtual void removeListener(InputListener* listener);
+    virtual void addListener(listener_ptr listener);
+
+    virtual void removeListener(listener_ptr listener);
 
 };
 

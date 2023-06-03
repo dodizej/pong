@@ -7,36 +7,45 @@ Input::Input()
 {
 }
 
-void Input::check_input()
+int Input::check_input()
 {
-	State state;
 	Key   key;
+	State state;
 
-	this->input_implementation(state, key);
-
+	int status = this->input_implementation(state, key);
 
 	if (state == State::PRESSED)
 	{
-		for (std::vector<InputListener*>::iterator it = listeners.begin(); it != listeners.end(); ++it)
+		for (std::vector<listener_ptr>::iterator it = listeners.begin(); it != listeners.end(); ++it)
 		{
 			(*it)->buttonPressed(key);
 		}
 	}
 	else if (state == State::RELEASED)
 	{
-		for (std::vector<InputListener*>::iterator it = listeners.begin(); it != listeners.end(); ++it)
+		for (std::vector<listener_ptr>::iterator it = listeners.begin(); it != listeners.end(); ++it)
 		{
 			(*it)->buttonReleased(key);
 		}
 	}
+
+	return status;
 }
 
-void Input::addListener(InputListener* listener)
+
+void Input::addListener(listener_ptr listener)
 {
 	this->listeners.push_back(listener);
 }
 
-void Input::removeListener(InputListener* listener)
+void Input::removeListener(listener_ptr listener)
 {
-	std::remove_if(listeners.begin(), listeners.end(), [&](InputListener* v_listener) { return listener == v_listener; });
+	listeners.erase(
+		std::remove_if(
+			listeners.begin(),
+			listeners.end(),
+			[&](listener_ptr v_listener) { return listener.get() == v_listener.get(); }
+		),
+		listeners.end()
+	);
 }

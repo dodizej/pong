@@ -14,13 +14,19 @@ protected:
 	int x = 100;
 	int y = 100;
 
-	int width = 0, height = 0;
+	int speed = 10;
+
+	int width  = 10;
+	int height = 10;
+
+	int window_size_x;
+	int window_size_y;
 
 public:
 
 	std::shared_ptr<Display> display_ptr;
 
-	Object(std::shared_ptr<Display> display_ptr);
+	Object(std::shared_ptr<Display> display_ptr, int x, int y);
 
 	virtual void draw() = 0;
 
@@ -28,6 +34,8 @@ public:
 
 	virtual void buttonPressed(Key k) = 0;
 	virtual void buttonReleased(Key k) = 0;
+
+	virtual ~Object();
 
 };
 
