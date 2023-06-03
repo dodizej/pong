@@ -15,7 +15,7 @@ public:
     void operator=(Display const&) = delete;
 
 
-    void drawRect(int x, int y, int w, int h);
+    void draw_rect(int x, int y, int w, int h);
 
     void show();
     void clear();

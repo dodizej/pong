@@ -22,9 +22,9 @@ public:
 
     virtual int  input_implementation(State & state, Key & key) = 0;
 
-    virtual void addListener(listener_ptr listener);
+    virtual void add_listener(listener_ptr listener);
 
-    virtual void removeListener(listener_ptr listener);
+    virtual void remove_listener(listener_ptr listener);
 
 };
 

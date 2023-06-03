@@ -6,9 +6,9 @@ class InputListener
 
 public:
 
-	virtual void buttonPressed(Key k) = 0;
+	virtual void button_pressed(Key k) = 0;
 
-	virtual void buttonReleased(Key k) = 0;
+	virtual void button_released(Key k) = 0;
 
 };
 

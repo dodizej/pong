@@ -25,7 +25,6 @@ Display::Display(int window_size_x, int window_size_y)
 
 	this->m_window_renderer = SDL_CreateRenderer(win, -1, render_flags);
 	SDL_SetRenderDrawColor(m_window_renderer, 0, 0, 0, 255);
-
 	
 }
 
@@ -35,8 +34,7 @@ std::shared_ptr<Display> Display::get_instance(int window_size_x, int window_siz
     return display_ptr;
 }
 
-
-void Display::drawRect(int x, int y, int w, int h)
+void Display::draw_rect(int x, int y, int w, int h)
 {
 	SDL_Rect rect; // always creating a new object
 	rect.x = x;

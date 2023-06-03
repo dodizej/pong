@@ -11,7 +11,7 @@ Racket::Racket(std::shared_ptr<Display> _display_ptr, int x, int y) : Object(_di
 void Racket::draw()
 {
 	this->update_position();
-	this->display_ptr->drawRect(x, y, width, height);
+	this->display_ptr->draw_rect(x, y, width, height);
 }
 
 void Racket::update_position()
@@ -47,42 +47,4 @@ void Racket::update_position()
 
 }
 
-void Racket::buttonPressed(Key k)
-{
-	if (k == Key::UP)
-	{
-		velocity_y = -1;
-	}
-	else if (k == Key::DOWN)
-	{
-		velocity_y = 1;
-	}
-	else if (k == Key::LEFT)
-	{
-		velocity_x = -1;
-	}
-	else if (k == Key::RIGHT)
-	{
-		velocity_x = 1;
-	}
-}
-
-void Racket::buttonReleased(Key k)
-{
-	if (k == Key::UP && velocity_y == -1)
-	{
-		velocity_y = 0;
-	}
-	else if (k == Key::DOWN && velocity_y == 1)
-	{
-		velocity_y = 0;
-	}
-	else if (k == Key::LEFT && velocity_x == -1)
-	{
-		velocity_x = 0;
-	}
-	else if (k == Key::RIGHT && velocity_x == 1)
-	{
-		velocity_x = 0;
-	}
-}
+Racket::~Racket() { }

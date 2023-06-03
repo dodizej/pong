@@ -44,6 +44,26 @@ void Object::update_position()
 
 }
 
+int Object::get_x()
+{
+	return x;
+}
+
+int Object::get_y()
+{
+	return y;
+}
+
+int Object::get_w()
+{
+	return width;
+}
+
+int Object::get_h()
+{
+	return height;
+}
+
 Object::~Object()
 {
 }

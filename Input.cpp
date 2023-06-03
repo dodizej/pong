@@ -18,14 +18,14 @@ int Input::check_input()
 	{
 		for (std::vector<listener_ptr>::iterator it = listeners.begin(); it != listeners.end(); ++it)
 		{
-			(*it)->buttonPressed(key);
+			(*it)->button_pressed(key);
 		}
 	}
 	else if (state == State::RELEASED)
 	{
 		for (std::vector<listener_ptr>::iterator it = listeners.begin(); it != listeners.end(); ++it)
 		{
-			(*it)->buttonReleased(key);
+			(*it)->button_released(key);
 		}
 	}
 
@@ -33,12 +33,12 @@ int Input::check_input()
 }
 
 
-void Input::addListener(listener_ptr listener)
+void Input::add_listener(listener_ptr listener)
 {
 	this->listeners.push_back(listener);
 }
 
-void Input::removeListener(listener_ptr listener)
+void Input::remove_listener(listener_ptr listener)
 {
 	listeners.erase(
 		std::remove_if(

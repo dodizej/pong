@@ -135,6 +135,7 @@
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PlayerRacket.cpp" />
     <ClCompile Include="Racket.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="InputListener.h" />
     <ClInclude Include="KeyboardInput.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PlayerRacket.h" />
     <ClInclude Include="Racket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
