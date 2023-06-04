@@ -1,6 +1,6 @@
 #pragma once
 #include "Racket.h"
-class PlayerRacket : public Racket
+class PlayerRacket : public Racket, public InputListener
 {
 
 public:

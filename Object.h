@@ -4,10 +4,14 @@
 #include "Display.h"
 #include "Key.h"
 
-class Object : public InputListener
+class Object
 {
 
 protected:
+
+	int init_pos_x;
+	int init_pos_y;
+
 	int velocity_x = 0;
 	int velocity_y = 0;
 
@@ -22,15 +26,14 @@ protected:
 	int window_size_x;
 	int window_size_y;
 
-public:
-
 	std::shared_ptr<Display> display_ptr;
 
+public:
+
 	Object(std::shared_ptr<Display> display_ptr, int x, int y);
+	virtual ~Object();
 
-	virtual void draw() = 0;
-
-	// TODO: virtual void reset_position() = 0;
+	virtual void reset_position();
 
 	void update_position();
 
@@ -38,8 +41,12 @@ public:
 	int get_y();
 	int get_w();
 	int get_h();
+	int get_velocity_x();
+	int get_velocity_y();
 
-	virtual ~Object();
+	virtual void draw() = 0;
+
+
 
 };
 

@@ -11,6 +11,7 @@
 #include "KeyboardInput.h"
 #include "Ball.h"
 #include "PlayerRacket.h"
+#include "ComputerRacket.h"
 
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow)
@@ -18,51 +19,86 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLin
 
 	int game_status = 0;
 
-	std::shared_ptr<Display> display_ptr = Display::get_instance(700, 500);
+	int window_size_x = 500;
+	int window_size_y = 500;
+
+	std::shared_ptr<Display> display_ptr = Display::get_instance(window_size_x, window_size_y);
 
 	std::shared_ptr<Input>   input_ptr(new KeyboardInput());
 
+	// Create objects
+	std::shared_ptr<Ball>           ball_ptr(new Ball(display_ptr, window_size_x/2, window_size_y/2));
 
-	std::shared_ptr<PlayerRacket> racket_ptr(new PlayerRacket(display_ptr, 50, 50));
-	std::shared_ptr<Ball>         ball_ptr(new Ball(display_ptr, 100, 100));
+	std::shared_ptr<PlayerRacket>   player_racket_ptr(new PlayerRacket(display_ptr, 50, 50));
+	std::shared_ptr<ComputerRacket> computer_racket_ptr(new ComputerRacket(display_ptr, window_size_x - 50, window_size_y - 50, ball_ptr));
 
-	ball_ptr->add_collision_obj(racket_ptr);
+
+	// Add player racket as listener to keyboard input
+	input_ptr->add_listener(player_racket_ptr);
+
+	// Add collision objects
+	ball_ptr->add_collision_obj(player_racket_ptr);
+	ball_ptr->add_collision_obj(computer_racket_ptr);
 
 
 	std::vector<std::shared_ptr<Object>> objects;
-	objects.push_back(racket_ptr);
 	objects.push_back(ball_ptr);
+	objects.push_back(player_racket_ptr);
+	objects.push_back(computer_racket_ptr);
 
 
-	input_ptr->add_listener(racket_ptr);
-
+	int player_points   = 0;
+	int computer_points = 0;
 
 	SDL_Event evt;
 	bool exit = false;
+
 	while (!exit)
 	{
-		while (!exit && ball_ptr->get_game_status() <= 0)
+		//racket_ptr->x += 5;
+		display_ptr->clear();
+		int status = input_ptr->check_input();
+		if (status < 0)
 		{
-			//racket_ptr->x += 5;
-			display_ptr->clear();
-			int status = input_ptr->check_input();
-			if (status < 0)
+			exit = true;
+			break;
+		}
+		for (std::vector<std::shared_ptr<Object>>::iterator it = objects.begin(); it < objects.end(); ++it)
+		{
+			(*it)->draw();
+		}
+		display_ptr->show();
+		
+		game_status = ball_ptr->get_game_status();
+		if (game_status != 0)
+		{
+			if (game_status > 0)
 			{
-				exit = true;
-				break;
+				++computer_points;
+				SDL_Log("Computer +1");
+			}
+			else
+			{
+				++player_points;
+				SDL_Log("Player +1");
 			}
 			for (std::vector<std::shared_ptr<Object>>::iterator it = objects.begin(); it < objects.end(); ++it)
 			{
-				(*it)->draw();
+				(*it)->reset_position();
 			}
-			display_ptr->show();
 		}
 
-		if (ball_ptr->get_game_status() > 0)
+		if (player_points >= 3)
 		{
-			SDL_Log("+1 point for Player 2 ");
+			SDL_Log("Player won!");
 			break;
 		}
+		else if (computer_points == 3)
+		{
+			SDL_Log("Computer won!");
+			break;
+		}
+
 	}
 	
 	while (!exit)

@@ -3,11 +3,14 @@
 
 Object::Object(std::shared_ptr<Display> _display_ptr, int x, int y)
 {
+	this->x = x;
+	this->y = y;
+	this->init_pos_x = x;
+	this->init_pos_y = y;
 	this->display_ptr = _display_ptr;
 	this->window_size_x = _display_ptr->get_window_size_x();
 	this->window_size_y = _display_ptr->get_window_size_y();
-	this->x = x;
-	this->y = y;
+
 }
 
 
@@ -44,6 +47,12 @@ void Object::update_position()
 
 }
 
+void Object::reset_position()
+{
+	x = init_pos_x;
+	y = init_pos_y;
+}
+
 int Object::get_x()
 {
 	return x;
@@ -63,6 +72,17 @@ int Object::get_h()
 {
 	return height;
 }
+
+int Object::get_velocity_x()
+{
+	return velocity_x;
+}
+
+int Object::get_velocity_y()
+{
+	return velocity_y;
+}
+
 
 Object::~Object()
 {

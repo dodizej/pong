@@ -20,11 +20,11 @@ public:
 
     virtual int  check_input();
 
-    virtual int  input_implementation(State & state, Key & key) = 0;
-
     virtual void add_listener(listener_ptr listener);
 
     virtual void remove_listener(listener_ptr listener);
+    
+    virtual int  input_implementation(State& state, Key& key) = 0;
 
 };
 

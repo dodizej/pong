@@ -6,6 +6,7 @@ enum Key
 	, DOWN
 	, LEFT
 	, RIGHT
+	, RETURN
 };
 
 enum State

@@ -29,5 +29,7 @@ public:
 
 	virtual int get_game_status();
 
+	void reset_position();
+
 };
 

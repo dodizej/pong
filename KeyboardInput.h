@@ -12,7 +12,7 @@ public:
 
 	KeyboardInput();
 
-	virtual int input_implementation(State & state, Key & key);
+	int input_implementation(State & state, Key & key);
 	
 };
 
