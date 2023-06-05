@@ -19,8 +19,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLin
 
 	int game_status = 0;
 
-	int window_size_x = 500;
-	int window_size_y = 500;
+	int window_size_x = 900;
+	int window_size_y = 700;
 
 	std::shared_ptr<Display> display_ptr = Display::get_instance(window_size_x, window_size_y);
 
@@ -29,8 +29,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLin
 	// Create objects
 	std::shared_ptr<Ball>           ball_ptr(new Ball(display_ptr, window_size_x/2, window_size_y/2));
 
-	std::shared_ptr<PlayerRacket>   player_racket_ptr(new PlayerRacket(display_ptr, 50, 50));
-	std::shared_ptr<ComputerRacket> computer_racket_ptr(new ComputerRacket(display_ptr, window_size_x - 50, window_size_y - 50, ball_ptr));
+	std::shared_ptr<PlayerRacket>   player_racket_ptr(new PlayerRacket(display_ptr, 50, window_size_y/2));
+	std::shared_ptr<ComputerRacket> computer_racket_ptr(new ComputerRacket(display_ptr, window_size_x - 50, window_size_y/2, ball_ptr));
 
 
 	// Add player racket as listener to keyboard input
@@ -45,7 +45,6 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLin
 	objects.push_back(ball_ptr);
 	objects.push_back(player_racket_ptr);
 	objects.push_back(computer_racket_ptr);
-
 
 	int player_points   = 0;
 	int computer_points = 0;
@@ -82,23 +81,33 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLin
 				++player_points;
 				SDL_Log("Player +1");
 			}
+
+			if (player_points >= 3 || computer_points >= 3)
+			{
+				if (player_points >= 3)
+				{
+					display_ptr->draw_text("Player won!");
+					SDL_Log("Player won!");
+					display_ptr->show();
+					break;
+				}
+				else if (computer_points == 3)
+				{
+					display_ptr->draw_text("Computer won!");
+					SDL_Log("Computer won!");
+					display_ptr->show();
+					break;
+				}
+
+
+			}
+
 			for (std::vector<std::shared_ptr<Object>>::iterator it = objects.begin(); it < objects.end(); ++it)
 			{
 				(*it)->reset_position();
 			}
+			SDL_Delay(200);
 		}
-
-		if (player_points >= 3)
-		{
-			SDL_Log("Player won!");
-			break;
-		}
-		else if (computer_points == 3)
-		{
-			SDL_Log("Computer won!");
-			break;
-		}
-
 	}
 	
 	while (!exit)

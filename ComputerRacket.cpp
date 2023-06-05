@@ -1,4 +1,6 @@
 #include "ComputerRacket.h"
+#include <SDL2/SDL.h>
+#include <string>
 
 ComputerRacket::ComputerRacket
 (
@@ -10,23 +12,17 @@ ComputerRacket::ComputerRacket
 	this->ball_ptr = ball_ptr;
 }
 
-
 void ComputerRacket::update_position()
 {
-	//velocity_y = 1;
-	/*
-	if (y < ball_ptr->get_y())
-	{
-		velocity_y = 1;
-	}
-	else if (y > ball_ptr->get_y())
-	{
-		velocity_y = -1;
-	}
-	else
-	{
-		//velocity_y = 0;
-	}*/
+	int ball_y_velocity = ball_ptr->get_velocity_y();
+
+	int x_ball_pos = ball_ptr->get_x() + (ball_ptr->get_w() / 2);
+	int y_ball_pos = ball_ptr->get_y() + (ball_ptr->get_h() / 2);
+
+	int x_diff = x + (width / 2) - x_ball_pos;
+	int y_diff = y + (height / 2) - y_ball_pos;
+
+
 
 	y += speed * velocity_y;
 
@@ -45,13 +41,13 @@ void ComputerRacket::update_position()
 	// bottom boundary
 	if (y + height > window_size_y)
 	{
-		velocity_y = -1;
+		velocity_y = 0;
 		y = window_size_y - height;
 	}
 	// upper boundary
 	if (y < 0)
 	{
-		velocity_y = 1;
+		velocity_y = 0;
 		y = 0;
 	}
 

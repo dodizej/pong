@@ -16,14 +16,6 @@ void PlayerRacket::button_pressed(Key k)
 	{
 		velocity_y = 1;
 	}
-	else if (k == Key::LEFT)
-	{
-		velocity_x = -1;
-	}
-	else if (k == Key::RIGHT)
-	{
-		velocity_x = 1;
-	}
 }
 
 void PlayerRacket::button_released(Key k)
@@ -35,13 +27,5 @@ void PlayerRacket::button_released(Key k)
 	else if (k == Key::DOWN && velocity_y == 1)
 	{
 		velocity_y = 0;
-	}
-	else if (k == Key::LEFT && velocity_x == -1)
-	{
-		velocity_x = 0;
-	}
-	else if (k == Key::RIGHT && velocity_x == 1)
-	{
-		velocity_x = 0;
 	}
 }

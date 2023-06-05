@@ -5,7 +5,7 @@
 Ball::Ball(std::shared_ptr<Display> display_ptr, int x, int y) : Object(display_ptr, x, y)
 {
 	this->game_status = 0;
-	this->speed       = 4;
+	this->speed       = 5;
 	this->velocity_x  = 1;
 	this->velocity_y  = 1;
 	this->width       = 15;

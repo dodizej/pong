@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <string>
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 
@@ -16,6 +17,7 @@ public:
 
 
     void draw_rect(int x, int y, int w, int h);
+    void draw_text(std::string text);
 
     void show();
     void clear();

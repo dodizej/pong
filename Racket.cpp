@@ -5,7 +5,7 @@
 Racket::Racket(std::shared_ptr<Display> _display_ptr, int x, int y) : Object(_display_ptr, x, y)
 {
 	this->width = 20;
-	this->height = 70;
+	this->height = 90;
 }
 
 void Racket::draw()
