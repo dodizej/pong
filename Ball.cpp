@@ -5,9 +5,9 @@
 Ball::Ball(std::shared_ptr<Display> display_ptr, int x, int y) : Object(display_ptr, x, y)
 {
 	this->game_status = 0;
-	this->speed       = 5;
-	this->velocity_x  = 1;
-	this->velocity_y  = 1;
+	this->speed       = 4;
+	this->velocity_x  = rand() % 5 + 2;
+	this->velocity_y  = rand() % 2 + 1;
 	this->width       = 15;
 	this->height      = 15;
 }
@@ -33,7 +33,7 @@ void Ball::update_position()
 	x += speed * velocity_x;
 	y += speed * velocity_y;
 
-	for (coll_obj_vec::iterator it = collision_objects.begin(); it != collision_objects.end(); ++it)
+	for (Coll_obj_vec::iterator it = collision_objects.begin(); it != collision_objects.end(); ++it)
 	{
 		std::shared_ptr<Object> obj_ptr = *it;
 
@@ -47,6 +47,8 @@ void Ball::update_position()
 			 x          < obj_x + obj_w  &&
 			 y          < obj_y + obj_h      )
 		{
+
+			int x_rnd_vel = rand() % 2 + 4;
 
 			int x_ball_cen = x + width  / 2;
 			int y_ball_cen = y + height / 2;
@@ -79,11 +81,11 @@ void Ball::update_position()
 			{
 				if (x_diff < 0)
 				{
-					velocity_x = -1;
+					velocity_x = -x_rnd_vel;
 				}
 				else
 				{
-					velocity_x = 1;
+					velocity_x = x_rnd_vel;
 				}
 			}
 
@@ -132,6 +134,8 @@ void Ball::reset_position()
 {
 	game_status = 0;
 	Object::reset_position();
+	this->velocity_x = rand() % 4 + 1;
+	this->velocity_y = rand() % 2 + 1;
 }
 
 Ball::~Ball() {}

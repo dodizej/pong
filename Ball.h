@@ -6,9 +6,9 @@ class Ball : public Object
 {
 private:
 
-	typedef std::vector<std::shared_ptr<Object>> coll_obj_vec;
+	typedef std::vector<std::shared_ptr<Object>> Coll_obj_vec;
 
-	coll_obj_vec collision_objects;
+	Coll_obj_vec collision_objects;
 
 	int game_status;
 

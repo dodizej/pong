@@ -14,15 +14,33 @@ ComputerRacket::ComputerRacket
 
 void ComputerRacket::update_position()
 {
-	int ball_y_velocity = ball_ptr->get_velocity_y();
 
-	int x_ball_pos = ball_ptr->get_x() + (ball_ptr->get_w() / 2);
-	int y_ball_pos = ball_ptr->get_y() + (ball_ptr->get_h() / 2);
+	int limit = rand() % 5;
+	++frames;
+	if (true) //frames > limit)
+	{
+		int ball_y_velocity = ball_ptr->get_velocity_y();
 
-	int x_diff = x + (width / 2) - x_ball_pos;
-	int y_diff = y + (height / 2) - y_ball_pos;
+		int x_ball_pos = ball_ptr->get_x() + (ball_ptr->get_w() / 2);
+		int y_ball_pos = ball_ptr->get_y() + (ball_ptr->get_h() / 2);
 
+		int x_diff = x + (width / 2) - x_ball_pos;
+		int y_diff = y + (height / 2) - y_ball_pos;
 
+		if (y_diff < -20)
+		{
+			velocity_y = 1;
+		}
+		else if (y_diff > 20)
+		{
+			velocity_y = -1;
+		}
+		else
+		{
+			velocity_y = 0;
+		}
+		frames = 0;
+	}
 
 	y += speed * velocity_y;
 

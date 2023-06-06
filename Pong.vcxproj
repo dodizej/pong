@@ -130,21 +130,27 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="ComputerRacket.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Key.h" />
     <ClCompile Include="KeyboardInput.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PlayerRacket.cpp" />
+    <ClCompile Include="Pong.cpp" />
     <ClCompile Include="Racket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="ComputerRacket.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventListener.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputListener.h" />
     <ClInclude Include="KeyboardInput.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerRacket.h" />
     <ClInclude Include="Racket.h" />
