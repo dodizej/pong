@@ -14,9 +14,6 @@ public:
     
     static std::shared_ptr<Display> get_instance(int window_size_x, int window_size_y);
 
-    Display(Display const&)        = delete;
-    void operator=(Display const&) = delete;
-
     void draw_rect(int x, int y, int w, int h);
     void draw_rect_empty(int x, int y, int w, int h);
     void draw_text(std::string text, int x, int y, int font_size = 30);

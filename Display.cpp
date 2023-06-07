@@ -35,7 +35,7 @@ Display::Display(int window_size_x, int window_size_y)
 
 std::shared_ptr<Display> Display::get_instance(int window_size_x, int window_size_y)
 {
-	static std::shared_ptr<Display> display_ptr(new Display(window_size_x, window_size_y));
+	static std::shared_ptr<Display> display_ptr = std::make_shared<Display>(Display(window_size_x, window_size_y));
     return display_ptr;
 }
 

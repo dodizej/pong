@@ -15,9 +15,9 @@ ComputerRacket::ComputerRacket
 void ComputerRacket::update_position()
 {
 
-	int limit = rand() % 5;
+	int limit = rand() % 30 + 10;
 	++frames;
-	if (true) //frames > limit)
+	if (frames > limit)
 	{
 		int ball_y_velocity = ball_ptr->get_velocity_y();
 
@@ -27,11 +27,11 @@ void ComputerRacket::update_position()
 		int x_diff = x + (width / 2) - x_ball_pos;
 		int y_diff = y + (height / 2) - y_ball_pos;
 
-		if (y_diff < -20)
+		if (y_diff < -35)
 		{
 			velocity_y = 1;
 		}
-		else if (y_diff > 20)
+		else if (y_diff > 35)
 		{
 			velocity_y = -1;
 		}

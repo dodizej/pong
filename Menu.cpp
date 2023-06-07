@@ -10,6 +10,11 @@ std::string MenuItem::get_title()
 	return title;
 }
 
+GameEvent MenuItem::get_game_event()
+{
+	return game_event;
+}
+
 
 // Menu
 
@@ -20,11 +25,11 @@ Menu::Menu(std::shared_ptr<Display> display_ptr)
 
 std::shared_ptr<Menu> Menu::get_instance(std::shared_ptr<Display> display_ptr)
 {
-	static std::shared_ptr<Menu> menu_ptr(new Menu(display_ptr));
+	static std::shared_ptr<Menu> menu_ptr = std::make_shared<Menu>(Menu(display_ptr));
 
-	menu_ptr->menu_items.push_back(std::shared_ptr<MenuItem>( new MenuItem("Play"   , GameEvent::START_GAME   )));
-	menu_ptr->menu_items.push_back(std::shared_ptr<MenuItem>( new MenuItem("Options", GameEvent::OPEN_OPTIONS )));
-	menu_ptr->menu_items.push_back(std::shared_ptr<MenuItem>( new MenuItem("Exit"   , GameEvent::EXIT_GAME    )));
+	menu_ptr->menu_items.push_back(std::make_shared<MenuItem>( MenuItem("Play"   , GameEvent::START_GAME   )));
+	menu_ptr->menu_items.push_back(std::make_shared<MenuItem>( MenuItem("Options", GameEvent::OPEN_OPTIONS )));
+	menu_ptr->menu_items.push_back(std::make_shared<MenuItem>( MenuItem("Exit"   , GameEvent::EXIT_GAME    )));
 
 	return menu_ptr;
 }
@@ -109,12 +114,12 @@ void Menu::button_pressed(Key k)
 	}
 	else if (k == Key::RETURN)
 	{
-
+		this->notify_listeners(menu_items.at(selected_item)->get_game_event());
 	}
-	else if (k == Key::ESC)
+	/*else if (k == Key::ESC)
 	{
 
-	}
+	}*/
 };
 
 void Menu::button_released(Key k)

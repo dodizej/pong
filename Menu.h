@@ -5,6 +5,8 @@
 #include "Display.h"
 #include "InputListener.h"
 #include "Event.h"
+#include "EventListener.h"
+#include "EventGenerator.h"
 
 class MenuItem
 {
@@ -13,6 +15,7 @@ private:
 
 	std::string title;
 
+	GameEvent game_event;
 
 public:
 
@@ -20,10 +23,10 @@ public:
 
 	std::string get_title();
 
-	GameEvent game_event;
+	GameEvent get_game_event();
 };
 
-class Menu : public InputListener
+class Menu : public InputListener, public EventGenerator
 {
 
 private:
@@ -38,9 +41,6 @@ private:
 	int selected_item = 0;
 
 public:
-
-	Menu(Menu const&) = delete;
-	void operator=(Menu const&) = delete;
 
 	static std::shared_ptr<Menu> get_instance(std::shared_ptr<Display> display_ptr);
 
