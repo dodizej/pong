@@ -1,5 +1,5 @@
 #include "EventGenerator.h"
-
+#include "EventListener.h"
 
 void EventGenerator::add_event_listener(Event_listener_ptr listener)
 {

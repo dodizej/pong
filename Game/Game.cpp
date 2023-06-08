@@ -1,11 +1,5 @@
 #include "Game.h"
-#include "Display.h"
-#include "Input.h"
-#include "KeyboardInput.h"
-#include "Ball.h"
-#include "PlayerRacket.h"
-#include "ComputerRacket.h"
-
+#include "../Input/KeyboardInput.h"
 
 Game::Game() {}
 
@@ -42,6 +36,25 @@ void Game::init()
 	ball_ptr->add_collision_obj(computer_racket_ptr1);
 }
 
+void Game::start_main_loop()
+{
+	this->main_loop();
+}
+
+void Game::main_loop()
+{
+	while (!exit_flag)
+	{
+		display_ptr->clear();
+		input_ptr->check_input();
+		(*this.*current_func)();
+		display_ptr->show();
+	}
+}
+
+
+// event functions
+
 void Game::event_occured(GameEvent game_event)
 {	
 	if (game_event == GameEvent::EXIT_GAME)
@@ -54,11 +67,9 @@ void Game::event_occured(GameEvent game_event)
 	}	
 }
 
-// event functions
-
-void Game::start_main_loop()
+void Game::set_exit_flag()
 {
-	this->main_loop();
+	exit_flag = true;
 }
 
 void Game::start_game()
@@ -110,20 +121,7 @@ void Game::point_p2()
 }
 
 
-// loops
-
-void Game::main_loop()
-{
-	while (!exit_flag)
-	{
-		display_ptr->clear();
-		input_ptr->check_input();
-
-		(*this.*current_func)();
-
-		display_ptr->show();
-	}
-}
+// functions for main loop
 
 void Game::game_loop()
 {
@@ -162,11 +160,12 @@ void Game::game_over_loop()
 
 	}
 
-	int width, height;
 
-	// TODO FUNCTION TO DRAW TEXT TO CENTER
+	int width, height; 
+	
+	// todo - function to draw centered text 
 	display_ptr->get_text_size(text_to_show, 30, width, height);
-	display_ptr->draw_text("Player won!", (window_size_x / 2) - (width / 2), window_size_y * 0.2, 30);
+	display_ptr->draw_text(text_to_show, (window_size_x / 2) - (width / 2), window_size_y * 0.2, 30);
 
 	std::string press_space_text = "Press space to restart!";
 	display_ptr->get_text_size(press_space_text, 20, width, height);
@@ -199,7 +198,3 @@ void Game::menu_loop()
 	menu_ptr->show();
 }
 
-void Game::set_exit_flag()
-{
-	exit_flag = true;
-}

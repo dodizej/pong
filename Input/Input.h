@@ -3,8 +3,8 @@
 #include "Key.h"
 #include <vector>
 #include "InputListener.h"
-#include "Object.h"
-#include "EventGenerator.h"
+#include "../Events/EventGenerator.h"
+#include "../Events/Event.h"
 
 class Input : public EventGenerator
 {

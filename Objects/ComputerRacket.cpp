@@ -1,6 +1,4 @@
 #include "ComputerRacket.h"
-#include <SDL2/SDL.h>
-#include <string>
 
 ComputerRacket::ComputerRacket
 (

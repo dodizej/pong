@@ -1,7 +1,4 @@
 #include "KeyboardInput.h"
-#include "Key.h"
-#include <SDL2/SDL.h>
-#include "Event.h"
 
 KeyboardInput::KeyboardInput()
 {

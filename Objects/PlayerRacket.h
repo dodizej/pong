@@ -1,5 +1,7 @@
 #pragma once
 #include "Racket.h"
+#include "../Input/InputListener.h"
+
 class PlayerRacket : public Racket, public InputListener
 {
 

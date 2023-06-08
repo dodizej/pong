@@ -1,8 +1,6 @@
 #pragma once
 #include <memory>
-#include "InputListener.h"
-#include "Display.h"
-#include "Key.h"
+#include "../Display/Display.h"
 
 class Object
 {

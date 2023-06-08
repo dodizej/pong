@@ -2,6 +2,7 @@
 #include "Racket.h"
 #include "Ball.h"
 #include <memory>
+#include "../Display/Display.h"
 
 class ComputerRacket : public Racket
 {

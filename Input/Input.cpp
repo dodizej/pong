@@ -1,8 +1,5 @@
 #include "Input.h"
-#include "Key.h"
-#include <SDL2/SDL.h>
-#include <string>
-#include "Event.h"
+
 
 Input::Input()
 {

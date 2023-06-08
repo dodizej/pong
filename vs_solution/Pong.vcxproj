@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{755B5F80-D3FF-4A10-9443-3D00B94A97AF}</ProjectGuid>
+    <ProjectGuid>{86383c84-3f76-4a49-962f-87a7bd72d4fd}</ProjectGuid>
     <RootNamespace>Pong</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -127,37 +127,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="ComputerRacket.cpp" />
-    <ClCompile Include="Display.cpp" />
-    <ClCompile Include="EventGenerator.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="InputListener.cpp" />
-    <ClCompile Include="Key.h" />
-    <ClCompile Include="KeyboardInput.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="PlayerRacket.cpp" />
-    <ClCompile Include="Pong.cpp" />
-    <ClCompile Include="Racket.cpp" />
+    <ClCompile Include="..\Display\Display.cpp" />
+    <ClCompile Include="..\Events\EventGenerator.cpp" />
+    <ClCompile Include="..\Game\Game.cpp" />
+    <ClCompile Include="..\Game\Main.cpp" />
+    <ClCompile Include="..\Input\Input.cpp" />
+    <ClCompile Include="..\Input\InputListener.cpp" />
+    <ClCompile Include="..\Input\KeyboardInput.cpp" />
+    <ClCompile Include="..\Menu\Menu.cpp" />
+    <ClCompile Include="..\Objects\Ball.cpp" />
+    <ClCompile Include="..\Objects\ComputerRacket.cpp" />
+    <ClCompile Include="..\Objects\Object.cpp" />
+    <ClCompile Include="..\Objects\PlayerRacket.cpp" />
+    <ClCompile Include="..\Objects\Racket.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Color.h" />
-    <ClInclude Include="ComputerRacket.h" />
-    <ClInclude Include="Display.h" />
-    <ClInclude Include="Event.h" />
-    <ClInclude Include="EventGenerator.h" />
-    <ClInclude Include="EventListener.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="InputListener.h" />
-    <ClInclude Include="KeyboardInput.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="PlayerRacket.h" />
-    <ClInclude Include="Racket.h" />
+    <ClInclude Include="..\Display\Color.h" />
+    <ClInclude Include="..\Display\Display.h" />
+    <ClInclude Include="..\Events\Event.h" />
+    <ClInclude Include="..\Events\EventGenerator.h" />
+    <ClInclude Include="..\Events\EventListener.h" />
+    <ClInclude Include="..\Game\Game.h" />
+    <ClInclude Include="..\Input\Input.h" />
+    <ClInclude Include="..\Input\InputListener.h" />
+    <ClInclude Include="..\Input\Key.h" />
+    <ClInclude Include="..\Input\KeyboardInput.h" />
+    <ClInclude Include="..\Menu\Menu.h" />
+    <ClInclude Include="..\Objects\Ball.h" />
+    <ClInclude Include="..\Objects\ComputerRacket.h" />
+    <ClInclude Include="..\Objects\Object.h" />
+    <ClInclude Include="..\Objects\PlayerRacket.h" />
+    <ClInclude Include="..\Objects\Racket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

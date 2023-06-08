@@ -1,6 +1,5 @@
 #include "Object.h"
 
-
 Object::Object(std::shared_ptr<Display> _display_ptr, int x, int y)
 {
 	this->x = x;

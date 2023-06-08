@@ -1,10 +1,4 @@
-#include <iostream>
 #include "Display.h"
-#include <string>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_timer.h>
-#include <SDL2/SDL_ttf.h>
 
 
 Display::Display(int window_size_x, int window_size_y)

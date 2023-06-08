@@ -1,6 +1,9 @@
 #pragma once
 #include "Object.h"
-#include "EventGenerator.h"
+#include "../Events/EventGenerator.h"
+#include "../Input/Key.h"
+#include "../Display/Display.h"
+#include "../Objects/Object.h"
 #include <vector>
 
 class Ball : public Object, public EventGenerator

@@ -2,12 +2,10 @@
 #include <string>
 #include <memory>
 #include <vector>
-#include "Display.h"
-#include "InputListener.h"
-#include "Event.h"
-#include "EventListener.h"
-#include "EventGenerator.h"
-#include "Ball.h"
+#include "../Display/Display.h"
+#include "../Events/EventGenerator.h"
+#include "../Input/InputListener.h"
+#include "../Objects/Ball.h"
 
 class MenuItem
 {

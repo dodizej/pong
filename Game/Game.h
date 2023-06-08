@@ -1,12 +1,12 @@
 #pragma once
-#include "EventListener.h"
+#include "../Events/EventListener.h"
 #include <memory>
 #include <map>
-#include "Menu.h"
-#include "Input.h"
-#include "ComputerRacket.h"
-#include "PlayerRacket.h"
-#include "Ball.h"
+#include "../Menu/Menu.h"
+#include "../Input/Input.h"
+#include "../Objects/PlayerRacket.h"
+#include "../Objects/ComputerRacket.h"
+
 
 class Game : public EventListener
 {

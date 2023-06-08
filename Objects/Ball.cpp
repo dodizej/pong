@@ -1,6 +1,4 @@
 #include "Ball.h"
-#include <SDL2/SDL.h>
-#include <string>
 
 Ball::Ball(std::shared_ptr<Display> display_ptr, int x, int y) : Object(display_ptr, x, y)
 {

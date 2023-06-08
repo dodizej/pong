@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "EventListener.h"
+
 class EventGenerator
 {
 

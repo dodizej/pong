@@ -1,6 +1,4 @@
 #include "Racket.h"
-#include <SDL2/SDL_rect.h>
-
 
 Racket::Racket(std::shared_ptr<Display> _display_ptr, int x, int y) : Object(_display_ptr, x, y)
 {

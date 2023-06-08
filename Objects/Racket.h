@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "../Display/Display.h"
 
 class Racket : public Object
 {
