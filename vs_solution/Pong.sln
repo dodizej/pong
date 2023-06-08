@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pong", "Pong.vcxproj", "{86383C84-3F76-4A49-962F-87A7BD72D4FD}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{FE169428-6C01-4865-AE12-86AE51ED7E70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,11 @@ Global
 		{86383C84-3F76-4A49-962F-87A7BD72D4FD}.Release|x64.Build.0 = Release|x64
 		{86383C84-3F76-4A49-962F-87A7BD72D4FD}.Release|x86.ActiveCfg = Release|Win32
 		{86383C84-3F76-4A49-962F-87A7BD72D4FD}.Release|x86.Build.0 = Release|Win32
+		{FE169428-6C01-4865-AE12-86AE51ED7E70}.Debug|x64.ActiveCfg = Debug
+		{FE169428-6C01-4865-AE12-86AE51ED7E70}.Debug|x64.Build.0 = Debug
+		{FE169428-6C01-4865-AE12-86AE51ED7E70}.Debug|x86.ActiveCfg = Debug
+		{FE169428-6C01-4865-AE12-86AE51ED7E70}.Release|x64.ActiveCfg = Release
+		{FE169428-6C01-4865-AE12-86AE51ED7E70}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

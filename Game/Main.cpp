@@ -12,7 +12,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLin
 {
 
 	std::shared_ptr<Game> game_ptr = Game::get_instance();
-	game_ptr->start_main_loop();
+	game_ptr->main_loop();
 
 	return 0;
 }

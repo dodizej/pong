@@ -15,15 +15,13 @@ public:
 
     static std::shared_ptr<Game> get_instance();
 
-    void start_main_loop();
+    void main_loop();
 
 private:
 
     void init();
 
-    void main_loop();
     void event_occured(GameEvent game_event);
-    void evaluate_game();
     void reset_object_positions();
     void point_added();
 
@@ -59,7 +57,6 @@ private:
         , { GameEvent::MENU      , &Game::menu_loop     }
         , { GameEvent::POINT_P1  , &Game::point_p1      }
         , { GameEvent::POINT_P2  , &Game::point_p2      }
-
     };
 
 

@@ -36,11 +36,6 @@ void Game::init()
 	ball_ptr->add_collision_obj(computer_racket_ptr1);
 }
 
-void Game::start_main_loop()
-{
-	this->main_loop();
-}
-
 void Game::main_loop()
 {
 	while (!exit_flag)
@@ -139,6 +134,21 @@ void Game::game_loop()
 		(*it)->update_position();
 		(*it)->draw();
 	}
+	std::string player_score = std::to_string(player_points);
+	std::string compuiter_score = std::to_string(computer_points);
+
+	int width, height;
+	display_ptr->get_text_size(player_score, 50, width, height);
+	int x_title_pos = (window_size_x/2) - 50 - (width / 2);
+
+	display_ptr->draw_text(player_score, x_title_pos, window_size_y * 0.05, 50);
+
+	width, height;
+	display_ptr->get_text_size(compuiter_score, 50, width, height);
+	x_title_pos = (window_size_x / 2) + 50 - (width / 2);
+
+	display_ptr->draw_text(compuiter_score, x_title_pos, window_size_y * 0.05, 50);
+
 }
 
 void Game::game_over_loop()
@@ -150,16 +160,14 @@ void Game::game_over_loop()
 	std::string text_to_show = "";
 	if (player_points >= 3)
 	{
-		text_to_show = "Player won!";
+		text_to_show = "You win!";
 		SDL_Log("Player won!");
 	}
 	else if (computer_points >= 3)
 	{
-		text_to_show = "Computer won!";
+		text_to_show = "You lose!";
 		SDL_Log("Computer won!");
-
 	}
-
 
 	int width, height; 
 	

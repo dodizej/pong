@@ -4,8 +4,8 @@ Ball::Ball(std::shared_ptr<Display> display_ptr, int x, int y) : Object(display_
 {
 	this->game_status = 0;
 	this->speed       = 1;
-	this->velocity_x  = rand() % 5 + 3;
-	this->velocity_y  = rand() % 5 + 3;
+	this->velocity_x  = rand() % 2 > 0 ? 7 : -7;
+	this->velocity_y  = rand() % 2 > 0 ? 5 : -5;
 	this->width       = 15;
 	this->height      = 15;
 }
@@ -45,7 +45,7 @@ void Ball::update_position()
 			 y          < obj_y + obj_h      )
 		{
 
-			int x_rnd_vel = 5;
+			int x_rnd_vel = 7;
 
 			int x_ball_cen = x + width  / 2;
 			int y_ball_cen = y + height / 2;
