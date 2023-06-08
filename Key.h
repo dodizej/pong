@@ -7,6 +7,7 @@ enum Key
 	, LEFT
 	, RIGHT
 	, RETURN
+	, SPACE
 	, ESC
 };
 

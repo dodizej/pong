@@ -18,6 +18,7 @@ private:
 		, { SDL_SCANCODE_RIGHT  , Key::RIGHT  }
 		, { SDL_SCANCODE_RETURN , Key::RETURN }
 		, { SDL_SCANCODE_ESCAPE , Key::ESC    }
+		, { SDL_SCANCODE_SPACE  , Key::SPACE  }
 	};
 
 public:
@@ -25,6 +26,8 @@ public:
 	KeyboardInput();
 
 	void input_implementation(State & state, Key & key, GameEvent & game_event);
+
+	void wait_for_any_key(Key & key);
 	
 };
 

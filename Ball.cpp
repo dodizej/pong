@@ -5,7 +5,7 @@
 Ball::Ball(std::shared_ptr<Display> display_ptr, int x, int y) : Object(display_ptr, x, y)
 {
 	this->game_status = 0;
-	this->speed       = 5;
+	this->speed       = 50;
 	this->velocity_x  = 5;
 	this->velocity_y  = 5;
 	this->width       = 15;
@@ -92,7 +92,6 @@ void Ball::update_position()
 			//SDL_Log("Collision!");
 			
 			break;
-			
 		}
 	}
 

@@ -24,7 +24,6 @@ void Game::event_occured(GameEvent game_event)
 	}
 	else if (event_mapping.find(game_event) != event_mapping.end())
 	{
-		//(*this.*event_mapping[game_event])();
 		current_func = event_mapping[game_event];
 	}	
 }
@@ -61,12 +60,10 @@ void Game::main_loop()
 	}
 }
 
-
 void Game::menu()
 {
 	menu_ptr->show();
 }
-
 
 void Game::game_loop()
 {
@@ -130,21 +127,32 @@ void Game::game_loop()
 
 			if (player_points >= 3 || computer_points >= 3)
 			{
+				std::string text_to_show = "";
 				if (player_points >= 3)
 				{
-					display_ptr->draw_text("Player won!", window_size_x / 2, window_size_y * 0.2);
+					text_to_show = "Player won!";
 					SDL_Log("Player won!");
-					display_ptr->show();
-					break;
 				}
-				else if (computer_points == 3)
+				else if (computer_points >= 3)
 				{
-					display_ptr->draw_text("Computer won!", window_size_x / 2, window_size_y * 0.2);
+					text_to_show = "Computer won!";
 					SDL_Log("Computer won!");
-					display_ptr->show();
-					break;
+					
 				}
+				int width, height;
+				display_ptr->get_text_size(text_to_show, 30, width, height);
+				display_ptr->draw_text("Player won!", (window_size_x / 2) - (width / 2), window_size_y * 0.2, 30);
 
+				std::string press_space_text = "Press space to restart";
+				display_ptr->get_text_size(press_space_text, 20, width, height);
+				display_ptr->draw_text(press_space_text, (window_size_x / 2) - (width / 2), window_size_y * 0.7, 20);
+
+				std::string press_any_text = "Press any other key to return to the menu";
+				display_ptr->get_text_size(press_any_text, 20, width, height);
+				display_ptr->draw_text(press_any_text, (window_size_x / 2) - (width / 2), window_size_y * 0.75, 20);
+
+				display_ptr->show();
+				break;
 			}
 
 			for (std::vector<std::shared_ptr<Object>>::iterator it = objects.begin(); it < objects.end(); ++it)
@@ -155,9 +163,16 @@ void Game::game_loop()
 		}
 	}
 
-	this->input_ptr->remove_listener(player_racket_ptr);
-	this->input_ptr->add_listener(menu_ptr);
-	current_func = event_mapping[GameEvent::MENU];
+	Key key;
+	this->input_ptr->wait_for_any_key(key);
+
+	if (key != Key::SPACE)
+	{
+		current_func = event_mapping[GameEvent::MENU];
+		this->input_ptr->remove_listener(player_racket_ptr);
+		this->input_ptr->add_listener(menu_ptr);
+	}
+	
 }
 
 void Game::set_exit_flag()

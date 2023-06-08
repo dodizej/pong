@@ -26,5 +26,7 @@ public:
     
     virtual void input_implementation(State& state, Key& key, GameEvent& game_event) = 0;
 
+    virtual void wait_for_any_key(Key& key) = 0;
+
 };
 

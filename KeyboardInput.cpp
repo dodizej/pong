@@ -33,3 +33,22 @@ void KeyboardInput::input_implementation(State & state, Key & key, GameEvent & g
 		}
 	}
 }
+
+void KeyboardInput::wait_for_any_key(Key & key)
+{
+	bool no_input = true;
+	while (no_input)
+	{
+		while (SDL_PollEvent(&sdl_event))
+		{
+			if (sdl_event.type == SDL_KEYDOWN)
+			{
+				if (key_mapping.find(sdl_event.key.keysym.scancode) != key_mapping.end())
+				{
+					no_input = false;
+					key = key_mapping.at(sdl_event.key.keysym.scancode);
+				}
+			}
+		}
+	}
+}
