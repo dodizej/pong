@@ -120,14 +120,6 @@ void Game::point_p2()
 
 void Game::game_loop()
 {
-	/*
-	std::string press_space_text = "Press space to play!";
-	display_ptr->get_text_size(press_space_text, 20, width, height);
-	display_ptr->draw_text(press_space_text, (window_size_x / 2) - (width / 2), window_size_y * 0.7, 20);
-
-	display_ptr->show();
-	*/
-	//this->input_ptr->wait_for_any_key(key);
 
 	for (std::vector<std::shared_ptr<Object>>::iterator it = objects.begin(); it < objects.end(); ++it)
 	{
@@ -179,7 +171,7 @@ void Game::game_over_loop()
 	display_ptr->get_text_size(press_space_text, 20, width, height);
 	display_ptr->draw_text(press_space_text, (window_size_x / 2) - (width / 2), window_size_y * 0.7, 20);
 
-	std::string press_any_text = "Press any other key to return to the menu...";
+	std::string press_any_text = "Press return key to return to the menu...";
 	display_ptr->get_text_size(press_any_text, 20, width, height);
 	display_ptr->draw_text(press_any_text, (window_size_x / 2) - (width / 2), window_size_y * 0.75, 20);
 
@@ -191,7 +183,7 @@ void Game::game_over_loop()
 	{
 		current_func = event_mapping.at(GameEvent::START_GAME);
 	}
-	else
+	else if (key == Key::RETURN)
 	{
 		current_func = event_mapping.at(GameEvent::MENU);
 
