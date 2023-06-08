@@ -14,8 +14,6 @@ private:
 
 	Coll_obj_vec collision_objects;
 
-	int game_status;
-
 public:
 
 
@@ -30,8 +28,6 @@ public:
 	virtual void update_position();
 
 	virtual void add_collision_obj(std::shared_ptr<Object> object);
-
-	virtual int get_game_status();
 
 	void reset_position();
 

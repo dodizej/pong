@@ -39,8 +39,8 @@ private:
 
 
     bool exit_flag    = false;
-    int window_size_x = 900;
-    int window_size_y = 700;
+    int window_size_x = 800;
+    int window_size_y = 600;
 
     const int points_to_win = 3;
 

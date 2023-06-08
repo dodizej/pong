@@ -2,8 +2,6 @@
 
 Ball::Ball(std::shared_ptr<Display> display_ptr, int x, int y) : Object(display_ptr, x, y)
 {
-	this->game_status = 0;
-	this->speed       = 1;
 	this->velocity_x  = rand() % 2 > 0 ? 7 : -7;
 	this->velocity_y  = rand() % 2 > 0 ? 5 : -5;
 	this->width       = 15;
@@ -119,17 +117,11 @@ void Ball::update_position()
 
 }
 
-int Ball::get_game_status()
-{
-	return game_status;
-}
-
 void Ball::reset_position()
 {
-	game_status = 0;
 	Object::reset_position();
-	this->velocity_x = 5;
-	this->velocity_y = 5;
+	this->velocity_x = rand() % 2 > 0 ? 3 : -3;
+	this->velocity_y = rand() % 2 > 0 ? 3 : -3;
 }
 
 Ball::~Ball() {}

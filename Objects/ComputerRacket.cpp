@@ -13,7 +13,7 @@ ComputerRacket::ComputerRacket
 void ComputerRacket::update_position()
 {
 
-	int limit = rand() % 15 + 5;
+	int limit = rand() % 25 + 5;
 	++frames;
 	if (frames > limit)
 	{
@@ -25,11 +25,11 @@ void ComputerRacket::update_position()
 		int x_diff = x + (width / 2) - x_ball_pos;
 		int y_diff = y + (height / 2) - y_ball_pos;
 
-		if (y_diff < -35)
+		if (y_diff < -10)
 		{
 			velocity_y = 1;
 		}
-		else if (y_diff > 35)
+		else if (y_diff > 10)
 		{
 			velocity_y = -1;
 		}
