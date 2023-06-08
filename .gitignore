@@ -1,3 +1,4 @@
 vs_solution/.vs
 vs_solution/x64
-vs_solution/Setup
+vs_solution/Setup/Debug
+vs_solution/Setup/Release
