@@ -5,6 +5,7 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_ttf.h>
 #include <map>
+#include "Color.h"
 
 
 class Display
@@ -14,9 +15,11 @@ public:
     
     static std::shared_ptr<Display> get_instance(int window_size_x, int window_size_y);
 
-    void draw_rect(int x, int y, int w, int h);
-    void draw_rect_empty(int x, int y, int w, int h);
-    void draw_text(std::string text, int x, int y, int font_size = 30);
+    void draw_rect(int x, int y, int w, int h, Color color = Color(255,255,255));
+
+    void draw_rect_empty(int x, int y, int w, int h, Color color = Color(255, 255, 255));
+
+    void draw_text(std::string text, int x, int y, int font_size = 30, Color color = Color(255, 255, 255));
 
     void show();
     void clear();

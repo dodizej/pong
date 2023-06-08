@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include <memory>
+#include "Ball.h"
 
 // MenuItem
 
@@ -28,8 +29,17 @@ std::shared_ptr<Menu> Menu::get_instance(std::shared_ptr<Display> display_ptr)
 	static std::shared_ptr<Menu> menu_ptr = std::make_shared<Menu>(Menu(display_ptr));
 
 	menu_ptr->menu_items.push_back(std::make_shared<MenuItem>( MenuItem("Play"   , GameEvent::START_GAME   )));
-	menu_ptr->menu_items.push_back(std::make_shared<MenuItem>( MenuItem("Options", GameEvent::OPEN_OPTIONS )));
+	//menu_ptr->menu_items.push_back(std::make_shared<MenuItem>( MenuItem("Options", GameEvent::OPEN_OPTIONS )));
 	menu_ptr->menu_items.push_back(std::make_shared<MenuItem>( MenuItem("Exit"   , GameEvent::EXIT_GAME    )));
+
+	for (int i = 0; i < 7; ++i)
+	{
+		menu_ptr->balls.push_back(
+			std::make_shared<Ball>(
+				Ball(display_ptr, rand() % display_ptr->get_window_size_x(), rand() % display_ptr->get_window_size_y())
+				)
+		);
+	}
 
 	return menu_ptr;
 }
@@ -100,6 +110,13 @@ void Menu::show()
 		y_rect_pos += text_max_height + 20;
 		++item_counter;
 	}
+
+	for (std::vector<std::shared_ptr<Ball> >::iterator it = balls.begin(); it != balls.end(); ++it)
+	{
+		(*it)->update_position();
+		(*it)->draw();
+	}
+
 }
 
 void Menu::button_pressed(Key k)

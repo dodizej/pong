@@ -43,9 +43,9 @@ void KeyboardInput::wait_for_any_key(Key & key)
 		{
 			if (sdl_event.type == SDL_KEYDOWN)
 			{
+				no_input = false;
 				if (key_mapping.find(sdl_event.key.keysym.scancode) != key_mapping.end())
 				{
-					no_input = false;
 					key = key_mapping.at(sdl_event.key.keysym.scancode);
 				}
 			}

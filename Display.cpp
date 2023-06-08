@@ -9,6 +9,7 @@
 
 Display::Display(int window_size_x, int window_size_y)
 {
+
 	this->window_size_x = window_size_x;
 	this->window_size_y = window_size_y;
 
@@ -39,7 +40,7 @@ std::shared_ptr<Display> Display::get_instance(int window_size_x, int window_siz
     return display_ptr;
 }
 
-void Display::draw_rect_empty(int x, int y, int w, int h)
+void Display::draw_rect_empty(int x, int y, int w, int h, Color color)
 {
 	SDL_Rect rect;
 	rect.x = x;
@@ -52,7 +53,7 @@ void Display::draw_rect_empty(int x, int y, int w, int h)
 	SDL_SetRenderDrawColor(this->m_window_renderer, 0, 0, 0, 255);
 }
 
-void Display::draw_rect(int x, int y, int w, int h)
+void Display::draw_rect(int x, int y, int w, int h, Color color)
 {
 	SDL_Rect rect;
 	rect.x = x;
@@ -80,11 +81,11 @@ TTF_Font* Display::get_font(int font_size)
 	return fonts_by_size[font_size];
 }
 
-void Display::draw_text(std::string text, int x, int y, int font_size)
+void Display::draw_text(std::string text, int x, int y, int font_size, Color color)
 {
 	TTF_Font* font_ptr = get_font(font_size);
 
-	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(font_ptr, text.c_str(), {255, 255, 255});
+	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(font_ptr, text.c_str(), { (Uint8) color.r, (Uint8) color.g, (Uint8) color.b });
 	SDL_Texture* Message        = SDL_CreateTextureFromSurface(m_window_renderer, surfaceMessage);
 
 	SDL_Rect Message_rect;  // little above center of the screen:

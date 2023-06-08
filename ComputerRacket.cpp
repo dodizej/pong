@@ -15,7 +15,7 @@ ComputerRacket::ComputerRacket
 void ComputerRacket::update_position()
 {
 
-	int limit = rand() % 30 + 10;
+	int limit = rand() % 20 + 10;
 	++frames;
 	if (frames > limit)
 	{

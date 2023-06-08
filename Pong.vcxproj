@@ -133,6 +133,7 @@
     <ClCompile Include="EventGenerator.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputListener.cpp" />
     <ClCompile Include="Key.h" />
     <ClCompile Include="KeyboardInput.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="ComputerRacket.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Event.h" />

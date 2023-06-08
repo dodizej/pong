@@ -35,7 +35,7 @@ public:
 
 	virtual void reset_position();
 
-	void update_position();
+	virtual void update_position();
 
 	int get_x();
 	int get_y();

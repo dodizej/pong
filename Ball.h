@@ -1,8 +1,9 @@
 #pragma once
 #include "Object.h"
+#include "EventGenerator.h"
 #include <vector>
 
-class Ball : public Object
+class Ball : public Object, public EventGenerator
 {
 private:
 

@@ -4,13 +4,13 @@
 
 Racket::Racket(std::shared_ptr<Display> _display_ptr, int x, int y) : Object(_display_ptr, x, y)
 {
-	this->width = 20;
+	this->width  = 20;
 	this->height = 90;
+	this->speed  = 15;
 }
 
 void Racket::draw()
 {
-	this->update_position();
 	this->display_ptr->draw_rect(x, y, width, height);
 }
 

@@ -5,16 +5,15 @@
 Ball::Ball(std::shared_ptr<Display> display_ptr, int x, int y) : Object(display_ptr, x, y)
 {
 	this->game_status = 0;
-	this->speed       = 50;
-	this->velocity_x  = 5;
-	this->velocity_y  = 5;
+	this->speed       = 1;
+	this->velocity_x  = rand() % 5 + 3;
+	this->velocity_y  = rand() % 5 + 3;
 	this->width       = 15;
 	this->height      = 15;
 }
 
 void Ball::draw()
 {
-	this->update_position();
 	this->display_ptr->draw_rect(x, y, width, height);
 }
 
@@ -89,8 +88,6 @@ void Ball::update_position()
 				}
 			}
 
-			//SDL_Log("Collision!");
-			
 			break;
 		}
 	}
@@ -98,15 +95,15 @@ void Ball::update_position()
 	// right side
 	if (x + width > window_size_x)
 	{
-		game_status = -1;              // P1 Score +1
-		velocity_x  = -1;
+		notify_listeners(GameEvent::POINT_P1);
+		velocity_x  *= -1;
 		x = window_size_x - width; 
 	}
 	// left side
 	if (x < 0)
 	{
-		game_status = 1;               // P2 Score +1
-		velocity_x = 1;   
+		notify_listeners(GameEvent::POINT_P2);
+		velocity_x *= -1;   
 		x = 0;
 	}
 	// bottom side
